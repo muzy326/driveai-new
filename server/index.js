@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 3000;
 
 // ------------------ MIDDLEWARE ------------------
 app.use(cors({
-  origin: true, // allow all origins (Replit proxy, localhost, etc.)
+  origin: process.env.FRONTEND_URL,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
@@ -43,7 +43,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
   console.log('➡️ REQUEST:', req.method, req.url);
-  console.log('AUTH HEADER:', req.headers.authorization);
+  // console.log('AUTH HEADER:', req.headers.authorization);
   next();
 });
 
