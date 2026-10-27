@@ -59,8 +59,7 @@ export class CarlistComponent implements OnInit {
   }
 
   getStars(rating: number = 0) {
-    const filled = Array(rating).fill(true);
-    const empty = Array(5 - rating).fill(false);
-    return [...filled, ...empty];
-  }
+  const value = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
+  return [...Array(value).fill(true), ...Array(5 - value).fill(false)];
+}
 }
